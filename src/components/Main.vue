@@ -7,7 +7,12 @@
 					v-for="(disc, index) in discArray"
 					:key="index"
 				>
-					<Card :img-url="disc.poster" />
+					<Card
+						:img-url="disc.poster"
+						:title="disc.title"
+						:author="disc.author"
+						:year="disc.year"
+					/>
 				</div>
 			</div>
 		</div>
@@ -42,7 +47,14 @@ export default {
 <style lang="scss" scoped>
 @import "../style/variables";
 main {
-	height: 1000px;
+	padding-top: 5%;
+	min-height: calc(100vh - #{$headerHeight});
 	background-color: $mainBlue;
+	.row {
+		justify-content: center;
+		& > div {
+			margin: 1% 1%;
+		}
+	}
 }
 </style>
