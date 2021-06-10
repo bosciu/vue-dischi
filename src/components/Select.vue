@@ -1,11 +1,5 @@
 <template>
-	<select
-		class="form-select"
-		@change="
-			$emit('changeGenre', arrayDischi);
-			riempiArray;
-		"
-	>
+	<select class="form-select" @change="riempiArray;">
 		<option selected>{{ mainText }}</option>
 		<option
 			v-for="(oggetto, index) in arrayTornatoPieno"

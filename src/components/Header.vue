@@ -3,7 +3,6 @@
 		<img src="../assets/logo.png" alt="Spotify" />
 		<Select
 			main-text="Seleziona un genere"
-			@changeGenre="prova"
 			:arrayTornatoPieno="arrayTornatoPieno"
 		/>
 	</header>
@@ -18,12 +17,6 @@ export default {
 	},
 	props: {
 		arrayTornatoPieno: Array
-	},
-	methods: {
-		prova(arrayVuoto) {
-			console.log("Ciao da Header", arrayVuoto);
-			this.$emit("richiamoApp", arrayVuoto);
-		}
 	}
 };
 </script>

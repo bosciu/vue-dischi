@@ -32,9 +32,6 @@ export default {
 		Card,
 		Loader
 	},
-	props: {
-		arrayVuoto: Array
-	},
 	data() {
 		return {
 			discArray: [],

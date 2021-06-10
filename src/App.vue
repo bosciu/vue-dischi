@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
-		<Header @richiamoApp="prova" :arrayTornatoPieno="arrayVuoto" />
-		<Main @passoArrayPieno="prova1" :arrayVuoto="arrayVuoto" />
+		<Header :arrayTornatoPieno="discArray" />
+		<Main @passoArrayPieno="riempiArrayApp" />
 	</div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
 	},
 	data() {
 		return {
-			arrayVuoto: []
+			discArray: []
 		};
 	},
 	methods: {
@@ -24,8 +24,8 @@ export default {
 			console.log("Ciao da App", arrayVuoto);
 			this.$emit("richiamoMain", arrayVuoto);
 		},
-		prova1(discArray) {
-			this.arrayVuoto = discArray;
+		riempiArrayApp(discArray) {
+			this.discArray = discArray;
 		}
 	}
 };
