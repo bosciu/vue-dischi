@@ -1,12 +1,13 @@
 <template>
-	<select class="form-select" @change="riempiArray;">
-		<option selected>{{ mainText }}</option>
+	<select class="form-select">
+		<option selected disabled>{{ mainText }}</option>
+		<option value="all">Tutti</option>
 		<option
-			v-for="(oggetto, index) in arrayTornatoPieno"
+			v-for="(genere, index) in arrayTornatoPieno"
 			:key="index"
-			value="1"
+			:value="index"
 		>
-			{{ oggetto.genre }}
+			{{ genere }}
 		</option>
 	</select>
 </template>
@@ -20,15 +21,10 @@ export default {
 	},
 	data() {
 		return {
-			arrayDischi: []
+			arrayGeneri: []
 		};
 	},
-	methods: {
-		riempiArray() {
-			this.arrayDischi = this.arrayTornatoPieno;
-			console.log(this.arrayDischi);
-		}
-	}
+	methods: {}
 };
 </script>
 

@@ -35,7 +35,8 @@ export default {
 	data() {
 		return {
 			discArray: [],
-			isLoaded: false
+			isLoaded: false,
+			genreArray: []
 		};
 	},
 	methods: {},
@@ -46,7 +47,11 @@ export default {
 				response.data.response.forEach((element) => {
 					this.discArray.push(element);
 				});
-				this.$emit("passoArrayPieno", this.discArray);
+				this.discArray.forEach((element) => {
+					if (!this.genreArray.includes(element.genre))
+						this.genreArray.push(element.genre);
+				});
+				this.$emit("passoArrayGeneri", this.genreArray);
 				setTimeout(() => {
 					this.isLoaded = true;
 				}, 1500);

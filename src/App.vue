@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
-		<Header :arrayTornatoPieno="discArray" />
-		<Main @passoArrayPieno="riempiArrayApp" />
+		<Header :arrayTornatoPieno="genreArray" />
+		<Main @passoArrayGeneri="riempiArrayApp" />
 	</div>
 </template>
 
@@ -16,16 +16,12 @@ export default {
 	},
 	data() {
 		return {
-			discArray: []
+			genreArray: []
 		};
 	},
 	methods: {
-		prova(arrayVuoto) {
-			console.log("Ciao da App", arrayVuoto);
-			this.$emit("richiamoMain", arrayVuoto);
-		},
-		riempiArrayApp(discArray) {
-			this.discArray = discArray;
+		riempiArrayApp(genreArray) {
+			this.genreArray = genreArray;
 		}
 	}
 };
