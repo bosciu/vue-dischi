@@ -1,9 +1,14 @@
 <template>
 	<div id="app">
-		<Header :arrayTornatoPieno="genreArray" @passoGenere="salvoGenere" />
+		<Header
+			:arrayGeneriTornatoPieno="genreArray"
+			:arrayGeneraleTornatoPieno="arrayGenerale"
+			@passoValore="salvoValore"
+		/>
 		<Main
-			@passoArrayGeneri="riempiArrayApp"
-			:genereSelezionato="genereSelezionato"
+			@passoArrayGenerale="salvoArrayGenerale"
+			:valoreSelezionato="valoreSelezionato"
+			:chiaveSelect="chiaveSelect"
 		/>
 	</div>
 </template>
@@ -20,16 +25,23 @@ export default {
 	data() {
 		return {
 			genreArray: [],
-			genereSelezionato: undefined
+			valoreSelezionato: undefined,
+			chiaveSelect: "all",
+			arrayGenerale: []
 		};
 	},
 	methods: {
 		riempiArrayApp(genreArray) {
 			this.genreArray = genreArray;
 		},
-		salvoGenere(genere) {
-			this.genereSelezionato = genere;
-			console.log(genere);
+		salvoValore(valore, chiaveSelect) {
+			this.valoreSelezionato = valore;
+			if (chiaveSelect != undefined) {
+				this.chiaveSelect = chiaveSelect;
+			}
+		},
+		salvoArrayGenerale(array) {
+			this.arrayGenerale = array;
 		}
 	}
 };

@@ -1,11 +1,20 @@
 <template>
 	<header class="d-flex">
 		<img src="../assets/logo.png" alt="Spotify" />
-		<Select
-			main-text="Seleziona un genere"
-			:arrayTornatoPieno="arrayTornatoPieno"
-			@passoGenere="passoGenere"
-		/>
+		<div class="selects d-flex">
+			<Select
+				main-text="Seleziona un genere"
+				:optionArray="arrayGeneraleTornatoPieno"
+				:chiave-select="chiaveSelect1"
+				@selectOptionReturn="passoValore"
+			/>
+			<Select
+				main-text="Seleziona l'artista"
+				:optionArray="arrayGeneraleTornatoPieno"
+				:chiave-select="chiaveSelect2"
+				@selectOptionReturn="passoValore"
+			/>
+		</div>
 	</header>
 </template>
 
@@ -16,12 +25,19 @@ export default {
 	components: {
 		Select
 	},
+	data() {
+		return {
+			chiaveSelect1: "genre",
+			chiaveSelect2: "author"
+		};
+	},
 	props: {
-		arrayTornatoPieno: Array
+		arrayGeneriTornatoPieno: Array,
+		arrayGeneraleTornatoPieno: Array
 	},
 	methods: {
-		passoGenere(genere) {
-			this.$emit("passoGenere", genere);
+		passoValore(valore, chiaveSelect) {
+			this.$emit("passoValore", valore, chiaveSelect);
 		}
 	}
 };
@@ -30,9 +46,13 @@ export default {
 <style lang="scss" scoped>
 @import "../style/variables";
 header {
+	justify-content: space-between;
 	height: 100px;
 	padding: 15px;
 	background-color: $mainGrey;
+	.selects {
+		width: 25%;
+	}
 	img {
 		height: 100%;
 	}

@@ -2,18 +2,18 @@
 	<select
 		class="form-select"
 		@change="
-			selectOption($event);
-			$emit('passoGenere', genereSelezionato);
+			selectOptionReturn($event);
+			$emit('selectOptionReturn', valoreSelezionato, chiaveSelect);
 		"
 	>
 		<option selected disabled>{{ mainText }}</option>
 		<option value="all">Tutti</option>
 		<option
-			v-for="(genere, index) in arrayTornatoPieno"
+			v-for="(element, index) in finalArray"
 			:key="index"
-			:value="index"
+			:value="element"
 		>
-			{{ genere }}
+			{{ element }}
 		</option>
 	</select>
 </template>
@@ -23,17 +23,33 @@ export default {
 	name: "Select",
 	props: {
 		mainText: String,
-		arrayTornatoPieno: Array
+		optionArray: Array,
+		chiaveSelect: String
 	},
 	data() {
 		return {
-			genereSelezionato: undefined
+			valoreSelezionato: undefined
 		};
 	},
 	methods: {
-		selectOption(event) {
-			this.genereSelezionato = this.arrayTornatoPieno[event.target.value];
-			console.log(this.genereSelezionato);
+		selectOptionReturn(event) {
+			this.valoreSelezionato = event.target.value;
+		},
+		oggettoEstratto(element) {
+			if ((element = !undefined)) {
+				return element[this.chiaveSelect];
+			}
+		}
+	},
+	computed: {
+		finalArray() {
+			var array = [];
+			array = this.optionArray.map((element) => {
+				if (!array.includes(element[this.chiaveSelect])) {
+					return element[this.chiaveSelect];
+				}
+			});
+			return array;
 		}
 	}
 };

@@ -35,21 +35,20 @@ export default {
 	data() {
 		return {
 			discArray: [],
-			discArrayFiltered: [],
-			isLoaded: false,
-			genreArray: []
+			isLoaded: false
 		};
 	},
 	props: {
-		genereSelezionato: String
+		valoreSelezionato: String,
+		chiaveSelect: String
 	},
 	methods: {},
 	computed: {
 		filter() {
-			if (this.genereSelezionato != undefined) {
-				var array = this.discArray.filter(
-					(element) => element.genre == this.genereSelezionato
-				);
+			if (this.valoreSelezionato != "all") {
+				var array = this.discArray.filter((element) => {
+					return element[this.chiaveSelect] == this.valoreSelezionato;
+				});
 			} else {
 				array = this.discArray;
 			}
@@ -57,19 +56,14 @@ export default {
 		}
 	},
 	created() {
-		console.log(this.genreArray);
 		axios
 			.get("https://flynn.boolean.careers/exercises/api/array/music")
 			.then((response) => {
 				response.data.response.forEach((element) => {
 					this.discArray.push(element);
 				});
+				this.$emit("passoArrayGenerale", this.discArray);
 
-				this.discArray.forEach((element) => {
-					if (!this.genreArray.includes(element.genre))
-						this.genreArray.push(element.genre);
-				});
-				this.$emit("passoArrayGeneri", this.genreArray);
 				setTimeout(() => {
 					this.isLoaded = true;
 				}, 1500);
