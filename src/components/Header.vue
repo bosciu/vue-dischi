@@ -4,6 +4,7 @@
 		<Select
 			main-text="Seleziona un genere"
 			:arrayTornatoPieno="arrayTornatoPieno"
+			@passoGenere="passoGenere"
 		/>
 	</header>
 </template>
@@ -17,6 +18,11 @@ export default {
 	},
 	props: {
 		arrayTornatoPieno: Array
+	},
+	methods: {
+		passoGenere(genere) {
+			this.$emit("passoGenere", genere);
+		}
 	}
 };
 </script>

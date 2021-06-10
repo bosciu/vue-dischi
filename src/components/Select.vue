@@ -1,5 +1,11 @@
 <template>
-	<select class="form-select">
+	<select
+		class="form-select"
+		@change="
+			selectOption($event);
+			$emit('passoGenere', genereSelezionato);
+		"
+	>
 		<option selected disabled>{{ mainText }}</option>
 		<option value="all">Tutti</option>
 		<option
@@ -21,10 +27,15 @@ export default {
 	},
 	data() {
 		return {
-			arrayGeneri: []
+			genereSelezionato: undefined
 		};
 	},
-	methods: {}
+	methods: {
+		selectOption(event) {
+			this.genereSelezionato = this.arrayTornatoPieno[event.target.value];
+			console.log(this.genereSelezionato);
+		}
+	}
 };
 </script>
 

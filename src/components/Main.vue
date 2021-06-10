@@ -7,7 +7,7 @@
 			<div class="row">
 				<div
 					class="col-6 col-md-4 col-lg-2"
-					v-for="(disc, index) in discArray"
+					v-for="(disc, index) in filter"
 					:key="index"
 				>
 					<Card
@@ -35,18 +35,36 @@ export default {
 	data() {
 		return {
 			discArray: [],
+			discArrayFiltered: [],
 			isLoaded: false,
 			genreArray: []
 		};
 	},
+	props: {
+		genereSelezionato: String
+	},
 	methods: {},
+	computed: {
+		filter() {
+			if (this.genereSelezionato != undefined) {
+				var array = this.discArray.filter(
+					(element) => element.genre == this.genereSelezionato
+				);
+			} else {
+				array = this.discArray;
+			}
+			return array;
+		}
+	},
 	created() {
+		console.log(this.genreArray);
 		axios
 			.get("https://flynn.boolean.careers/exercises/api/array/music")
 			.then((response) => {
 				response.data.response.forEach((element) => {
 					this.discArray.push(element);
 				});
+
 				this.discArray.forEach((element) => {
 					if (!this.genreArray.includes(element.genre))
 						this.genreArray.push(element.genre);

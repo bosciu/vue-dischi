@@ -1,7 +1,10 @@
 <template>
 	<div id="app">
-		<Header :arrayTornatoPieno="genreArray" />
-		<Main @passoArrayGeneri="riempiArrayApp" />
+		<Header :arrayTornatoPieno="genreArray" @passoGenere="salvoGenere" />
+		<Main
+			@passoArrayGeneri="riempiArrayApp"
+			:genereSelezionato="genereSelezionato"
+		/>
 	</div>
 </template>
 
@@ -16,12 +19,17 @@ export default {
 	},
 	data() {
 		return {
-			genreArray: []
+			genreArray: [],
+			genereSelezionato: undefined
 		};
 	},
 	methods: {
 		riempiArrayApp(genreArray) {
 			this.genreArray = genreArray;
+		},
+		salvoGenere(genere) {
+			this.genereSelezionato = genere;
+			console.log(genere);
 		}
 	}
 };
