@@ -1,12 +1,17 @@
 <template>
-	<header>
+	<header class="d-flex">
 		<img src="../assets/logo.png" alt="Spotify" />
+		<Select main-text="Seleziona un genere" />
 	</header>
 </template>
 
 <script>
+import Select from "./Select";
 export default {
-	name: "Header"
+	name: "Header",
+	components: {
+		Select
+	}
 };
 </script>
 

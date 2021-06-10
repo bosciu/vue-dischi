@@ -26,6 +26,7 @@ export default {
 .card {
 	height: 100%;
 	background-color: $mainGrey;
+	cursor: pointer;
 	.img-container {
 		padding: 20px;
 		img {

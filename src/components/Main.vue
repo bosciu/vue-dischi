@@ -2,23 +2,23 @@
 	<main>
 		<transition name="fade">
 			<Loader v-if="!isLoaded" />
-			<div else class="container">
-				<div class="row">
-					<div
-						class="col-6 col-md-4 col-lg-2"
-						v-for="(disc, index) in discArray"
-						:key="index"
-					>
-						<Card
-							:img-url="disc.poster"
-							:title="disc.title"
-							:author="disc.author"
-							:year="disc.year"
-						/>
-					</div>
+		</transition>
+		<div else class="container">
+			<div class="row">
+				<div
+					class="col-6 col-md-4 col-lg-2"
+					v-for="(disc, index) in discArray"
+					:key="index"
+				>
+					<Card
+						:img-url="disc.poster"
+						:title="disc.title"
+						:author="disc.author"
+						:year="disc.year"
+					/>
 				</div>
 			</div>
-		</transition>
+		</div>
 	</main>
 </template>
 
@@ -46,7 +46,7 @@ export default {
 					this.discArray.push(element);
 				});
 				setTimeout(() => {
-					console.log((this.isLoaded = true));
+					this.isLoaded = true;
 				}, 1500);
 			});
 	}
