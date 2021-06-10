@@ -32,12 +32,16 @@ export default {
 		Card,
 		Loader
 	},
+	props: {
+		arrayVuoto: Array
+	},
 	data() {
 		return {
 			discArray: [],
 			isLoaded: false
 		};
 	},
+	methods: {},
 	created() {
 		axios
 			.get("https://flynn.boolean.careers/exercises/api/array/music")
@@ -45,6 +49,7 @@ export default {
 				response.data.response.forEach((element) => {
 					this.discArray.push(element);
 				});
+				this.$emit("passoArrayPieno", this.discArray);
 				setTimeout(() => {
 					this.isLoaded = true;
 				}, 1500);

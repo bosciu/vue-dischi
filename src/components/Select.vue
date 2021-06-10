@@ -1,9 +1,19 @@
 <template>
-	<select class="form-select">
+	<select
+		class="form-select"
+		@change="
+			$emit('changeGenre', arrayDischi);
+			riempiArray;
+		"
+	>
 		<option selected>{{ mainText }}</option>
-		<option value="1">One</option>
-		<option value="2">Two</option>
-		<option value="3">Three</option>
+		<option
+			v-for="(oggetto, index) in arrayTornatoPieno"
+			:key="index"
+			value="1"
+		>
+			{{ oggetto.genre }}
+		</option>
 	</select>
 </template>
 
@@ -11,7 +21,19 @@
 export default {
 	name: "Select",
 	props: {
-		mainText: String
+		mainText: String,
+		arrayTornatoPieno: Array
+	},
+	data() {
+		return {
+			arrayDischi: []
+		};
+	},
+	methods: {
+		riempiArray() {
+			this.arrayDischi = this.arrayTornatoPieno;
+			console.log(this.arrayDischi);
+		}
 	}
 };
 </script>

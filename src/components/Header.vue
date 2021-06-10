@@ -1,7 +1,11 @@
 <template>
 	<header class="d-flex">
 		<img src="../assets/logo.png" alt="Spotify" />
-		<Select main-text="Seleziona un genere" />
+		<Select
+			main-text="Seleziona un genere"
+			@changeGenre="prova"
+			:arrayTornatoPieno="arrayTornatoPieno"
+		/>
 	</header>
 </template>
 
@@ -11,6 +15,15 @@ export default {
 	name: "Header",
 	components: {
 		Select
+	},
+	props: {
+		arrayTornatoPieno: Array
+	},
+	methods: {
+		prova(arrayVuoto) {
+			console.log("Ciao da Header", arrayVuoto);
+			this.$emit("richiamoApp", arrayVuoto);
+		}
 	}
 };
 </script>
