@@ -1,7 +1,6 @@
 <template>
 	<div id="app">
 		<Header
-			:arrayGeneriTornatoPieno="genreArray"
 			:arrayGeneraleTornatoPieno="arrayGenerale"
 			@passoValore="salvoValore"
 		/>
@@ -31,9 +30,6 @@ export default {
 		};
 	},
 	methods: {
-		riempiArrayApp(genreArray) {
-			this.genreArray = genreArray;
-		},
 		salvoValore(valore, chiaveSelect) {
 			this.valoreSelezionato = valore;
 			if (chiaveSelect != undefined) {

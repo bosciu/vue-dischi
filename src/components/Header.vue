@@ -32,7 +32,6 @@ export default {
 		};
 	},
 	props: {
-		arrayGeneriTornatoPieno: Array,
 		arrayGeneraleTornatoPieno: Array
 	},
 	methods: {
