@@ -44,12 +44,12 @@ export default {
 	computed: {
 		finalArray() {
 			var array = [];
-			array = this.optionArray.map((element) => {
-				if (!array.includes(element[this.chiaveSelect])) {
-					return element[this.chiaveSelect];
-				}
-			});
-			return array;
+			if (this.optionArray.length > 1) {
+				array = this.optionArray.map(
+					(element) => element[this.chiaveSelect]
+				);
+			}
+			return [...new Set(array)];
 		}
 	}
 };
