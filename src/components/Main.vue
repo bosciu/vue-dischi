@@ -10,12 +10,7 @@
 					v-for="(disc, index) in filter"
 					:key="index"
 				>
-					<Card
-						:img-url="disc.poster"
-						:title="disc.title"
-						:author="disc.author"
-						:year="disc.year"
-					/>
+					<Card :item="disc" />
 				</div>
 			</div>
 		</div>
@@ -59,9 +54,7 @@ export default {
 		axios
 			.get("https://flynn.boolean.careers/exercises/api/array/music")
 			.then((response) => {
-				response.data.response.forEach((element) => {
-					this.discArray.push(element);
-				});
+				this.discArray = response.data.response;
 				this.$emit("passoArrayGenerale", this.discArray);
 
 				setTimeout(() => {

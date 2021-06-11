@@ -1,11 +1,11 @@
 <template>
 	<div class="card text-center">
 		<div class="img-container">
-			<img :src="imgUrl" alt="" />
+			<img :src="item.poster" :alt="item.title" />
 		</div>
-		<h2>{{ title }}</h2>
-		<h5>{{ author }}</h5>
-		<h6>{{ year }}</h6>
+		<h2>{{ item.title }}</h2>
+		<h5>{{ item.author }}</h5>
+		<h6>{{ item.year }}</h6>
 	</div>
 </template>
 
@@ -13,10 +13,7 @@
 export default {
 	name: "Card",
 	props: {
-		imgUrl: String,
-		title: String,
-		author: String,
-		year: String
+		item: Object
 	}
 };
 </script>
